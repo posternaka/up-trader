@@ -1,0 +1,26 @@
+@import './variables';
+@import './libs/normalize';
+
+#root {
+    height: 100vh;
+}
+
+.wrapper {
+    width: $container-width;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.content {
+    &__missing {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            font-size: 108px;
+        }
+    }
+}
