@@ -2,9 +2,11 @@ import React from 'react'
 
 const index = () => {
   return (
-    <div className='content__missing'>
-        <span>+</span>
-        <p>Add new Project</p>
+    <div className='missing'>
+      <div className='missing__wrapper'>
+          <span>+</span>
+          <p>add new project</p>
+      </div>
     </div>
   )
 }

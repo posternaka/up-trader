@@ -1,13 +1,15 @@
 import React from 'react';
 
-import Missing from '../components/Missing/index';
+import Missing from '../components/missing/index';
+import CardProject from '../components/cards_project/index';
 
 const Home = () => {
-  const arr = [];
 
   return (
     <div className='wrapper'>
-      {arr.length > 0 ? arr.map(it => <h1>{it}</h1>) : <Missing />}
+      <div className='content'>
+        {true ? <CardProject /> : <Missing />}
+      </div>
     </div>
   )
 }

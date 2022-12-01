@@ -1,26 +1,91 @@
 @import './variables';
 @import './libs/normalize';
 
-#root {
-    height: 100vh;
+body {
+    background: $background;
 }
+
+#root {
+    height: calc(100vh - 30px);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 
 .wrapper {
     width: $container-width;
+    background: $white;
     margin: 0 auto;
     height: 100%;
 }
 
 .content {
-    &__missing {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    padding: 20px 40px;
+    height: 100%;
+}
+
+.missing {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__wrapper {
+        width: 250px;
+        cursor: pointer;
+        transition: ease $duration;
 
         span {
+            display: block;
             font-size: 108px;
+            transition: ease $duration;
+        }
+
+        &:hover {
+            padding: 50px;
+            border-radius: 38% 62% 59% 41% / 30% 33% 67% 70% ;
+            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(246,126,190,0.2) 100%);
+
+            span {
+                color: $blue;
+                transform: rotate(180deg);
+            }
+
+            p {
+                color: $blue;
+            }
+        }
+    }
+}
+
+.card_project {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 50px;
+
+    &__item {
+        width: 20%;
+        padding: 100px;
+        cursor: pointer;
+        transition: ease $duration;
+        
+        p {
+            color: $pink;
+        }
+
+        h1 {
+            transition: ease $duration;
+        }
+
+        &:hover {
+            border-radius: 29% 71% 25% 75% / 73% 30% 70% 27% ;
+            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(42,150,218,0.2) 100%);
+
+            h1 {
+                color: $pink; 
+            }
         }
     }
 }
