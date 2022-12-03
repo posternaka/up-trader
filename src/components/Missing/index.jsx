@@ -1,14 +1,44 @@
-import React from 'react'
+import React from 'react';
+import Modal from '../modal/index';
 
-const index = () => {
+import { useDispatch } from 'react-redux';
+import { set_value } from '../../redux/actions/setValue.js';
+
+const Missing = () => {
+  const [isActive, setActive] = React.useState(false);
+  const [valueInput, setValueInput] = React.useState('');
+
+  const dispatch = useDispatch();
+
+  const handle = (e) => {
+    e.preventDefault();
+    setActive(false);
+    dispatch(set_value(valueInput));
+  }
+
   return (
-    <div className='missing'>
-      <div className='missing__wrapper'>
-          <span>+</span>
-          <p>add new project</p>
+    <>
+      {
+        isActive 
+        ? <Modal onClose={() => setActive(false)}>
+            <form className='form'>
+              <div className='form__name'>
+                  <span>add task</span>
+                  <input type="text" className="user" placeholder="Task Name" onChange={(e) => setValueInput(e.target.value)}/>
+              </div>
+              <button onClick={(e) => handle(e)}>Confirm</button>
+            </form>
+          </Modal>
+        : ''
+      }
+      <div className='missing'>
+        <div className='missing__wrapper' onClick={() => setActive(true)}>
+            <span>+</span>
+            <p>add new project</p>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
-export default index
+export default Missing;
