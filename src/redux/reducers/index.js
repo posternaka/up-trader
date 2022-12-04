@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { setValue } from './valueReducer';
+import { data } from './dataReducer';
 import { projectIndex } from './projectIndexReducer'
 
 export const reducers = combineReducers({
-    value: setValue,
+    value: data,
     index: projectIndex,
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from '../modal/index';
 
 import { useDispatch } from 'react-redux';
-import { set_value } from '../../redux/actions/setValue.js';
+import { set_project } from '../../redux/actions/setProject.js';
 
 const Missing = () => {
   const [isActive, setActive] = React.useState(false);
@@ -13,7 +13,7 @@ const Missing = () => {
   const handle = (e) => {
     e.preventDefault();
     setActive(false);
-    dispatch(set_value(valueInput));
+    dispatch(set_project(valueInput));
     setValueInput('');
   }
 
