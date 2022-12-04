@@ -9,17 +9,21 @@ export const setValue = (state = initStore, action) => {
                 ...state,
                 {
                     project_name: action.payload,
-                    task_name: '',
-                    task_number: 0,
-                    description: '',
-                    date_of_creation: '',
-                    time_at_work: '',
-                    expiration_date: '',
-                    priority: '',
-                    files: [],
-                    status: '',
-                    subtasks: [],
-                    comments: [],
+                    tasks: [
+                        {
+                            task_name: '',
+                            task_number: 0,
+                            description: '',
+                            date_of_creation: '',
+                            time_at_work: '',
+                            expiration_date: '',
+                            priority: '',
+                            files: [],
+                            status: '',
+                            subtasks: [],
+                            comments: [],
+                        }
+                    ],
                 }
             ]
         }

@@ -14,19 +14,19 @@ const Missing = () => {
     e.preventDefault();
     setActive(false);
     dispatch(set_value(valueInput));
+    setValueInput('');
   }
 
   return (
     <>
       {
         isActive 
-        ? <Modal onClose={() => setActive(false)}>
+        ? <Modal title={'add new project'} onClose={() => setActive(false)}>
             <form className='form'>
               <div className='form__name'>
-                  <span>add task</span>
-                  <input type="text" className="user" placeholder="Task Name" onChange={(e) => setValueInput(e.target.value)}/>
+                  <input type="text" className="user" placeholder="project name" onChange={(e) => setValueInput(e.target.value)} />
               </div>
-              <button onClick={(e) => handle(e)}>Confirm</button>
+              <button onClick={(e) => handle(e)} className='button'>confirm</button>
             </form>
           </Modal>
         : ''

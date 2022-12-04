@@ -1,6 +1,5 @@
 import React from 'react';
 // import styles from './createProject.module.scss';
-import './style.scss';
 
 const CreateProject = () => {
   return (

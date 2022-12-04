@@ -19,7 +19,7 @@ body {
     background: $white;
     border-radius: 5px;
     margin: 0 auto;
-    height: 100%;
+    min-height: calc(100vh - 30px);
 }
 
 .content {
@@ -35,6 +35,7 @@ body {
     justify-content: center;
 
     &__wrapper {
+        padding: 50px;
         width: 250px;
         cursor: pointer;
         transition: ease $duration;
@@ -46,7 +47,6 @@ body {
         }
 
         &:hover {
-            padding: 50px;
             border-radius: 38% 62% 59% 41% / 30% 33% 67% 70% ;
             background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(246,126,190,0.2) 100%);
 
@@ -65,11 +65,10 @@ body {
 .card_project {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: center;
     gap: 50px;
 
     &__item {
-        width: 20%;
         padding: 100px;
         cursor: pointer;
         transition: ease $duration;
@@ -88,6 +87,76 @@ body {
 
             h1 {
                 color: $pink; 
+            }
+        }
+    }
+}
+
+.button {
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+
+    &__name {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid $dark;
+        background: $white;
+        font-size: 14px;
+
+        &:focus {
+            background: #00000010;
+        }
+    }
+}
+
+.task {
+    &__title {
+        text-align: center;
+        padding-top: 20px;
+    }
+    &__blocks {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        height: calc(100vh - 110px);
+        
+    }
+
+    &__block {
+        border-radius: 5px;
+        width: 30%;
+        height: 100%;
+        
+        &--queue {
+            background: $queue;
+        }
+        &--development {
+            background: $development;
+        }
+        &--done {
+            background: $done;
+        }
+
+        .block {
+            &__add {
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
             }
         }
     }
