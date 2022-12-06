@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 import Home from './pages/Home';
-import Tasks from './pages/Tasks';
+import TaskList from './pages/TaskList';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     <Provider store={store}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/tasks" element={<TaskList />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Provider>

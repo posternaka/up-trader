@@ -1,6 +1,14 @@
 import { PROJECT_INDEX } from '../actions/types';
 
-const index = 0;
+let localStorageState;
+
+try {
+    localStorageState = JSON.parse(localStorage.getItem('index'));
+} catch (error) {
+    localStorageState = 0;
+}
+
+const index = localStorageState || 0;
 
 export const projectIndex = (state = index, action) => {
     switch(action.type) {

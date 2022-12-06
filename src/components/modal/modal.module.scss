@@ -41,8 +41,26 @@
     }
 
     &__header {
-       border-bottom: 1px solid #dbdbdb;
+        width: 100%;
+        border-bottom: 1px solid #dbdbdb;
         justify-content: space-between; 
+
+        &_edit {
+            position: relative;
+            width: 100%;
+
+            input {
+                font-size: 22px;
+                border: none;
+                border-bottom: 1px solid $dark;
+            }
+
+            span {
+                position: absolute;
+                top: 0;
+                right: 5%;
+            }
+        }
     }
 
     &__footer {

@@ -1,31 +1,52 @@
 import React from 'react';
-// import styles from './createProject.module.scss';
+import styles from './taskinfo.module.scss';
 
-const CreateProject = () => {
+const TaskInfo = () => {
   return (
-    <form className='form'>
-        <div className='form__name'>
-            <span>add task</span>
-            <input type="text" class="user" placeholder="Task Name"/>
+    <div className={styles.task}>
+        <div className={styles.task__wrapper}>
+            <div className={styles.task__time}>
+                <div><span className={styles.small_text}>date of creation</span><p>06.12.2022</p></div>
+                <div><span className={styles.small_text}>days in development</span><p>6</p></div>
+            </div>
+            <div className={styles.task__subtasks}>
+                <div className={styles.item}>
+                    <input type="checkbox" name="" id="" />
+                    <span>one one</span>
+                </div>
+                <div className={styles.add} >
+                    <span>+</span>
+                    <p>add subtask</p>
+                </div>
+            </div>
+            <div className={styles.task__comments}>
+                <div className={styles.item}>
+                    <span className={styles.avatar}></span>
+                    <div className={styles.comment}>
+                        <span className={styles.small_text}>author</span>
+                        <p>you do it very well</p>
+                    </div>
+                </div>
+                <div className={styles.item}>
+                    <span className={styles.avatar}></span>
+                    <div className={styles.comment}>
+                        <span className={styles.small_text}>author</span>
+                        <input type="text" placeholder='add comment' />
+                    </div>
+                </div>
+            </div>
+            <div className={styles.task__description}>
+                <textarea rows="3" placeholder='add description'></textarea>
+            </div>
+            <div className={styles.task__file}>
+                <input type="file" />
+            </div>
+            <div className={styles.task__end}>
+                <input type="date" name="" id="" />
+            </div>
         </div>
-        <div className='form__description'>
-            <span>add description</span>
-            <textarea cols="30" rows="4" placeholder="Description"></textarea>
-        </div>
-        <div className='form__date'>
-            <span>end date</span>
-            <input type="date" />
-        </div>
-        <div className='form__priority'>
-            <span>priority</span>
-            <input type="checkbox" />
-        </div>
-        <div className='form__files'>
-            <span>attach files</span>
-            <input type="file" />
-        </div>
-    </form>
+    </div>
   )
 }
 
-export default CreateProject;
+export default TaskInfo;

@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './modal.module.scss';
 
-const Modal= ({ title, onClose, children }) => {
+const Modal= ({ title, onClose, isEditTask = false, children }) => {
+    const [value, setValue] = React.useState('');
 
     const keydownHandler = ({ key }) => {
         switch (key) {
@@ -21,7 +22,18 @@ const Modal= ({ title, onClose, children }) => {
         <div className={styles.modal} onClick={() => onClose(false)}>
             <div className={styles.modal__dialog} onClick={e => e.stopPropagation()}>
                 <div className={styles.modal__header}>
-                    <h3 className={styles.modal__title}>{title}</h3>
+                    {
+                        isEditTask 
+                        ? <div className={styles.modal__header_edit}>
+                            <input type='text' onChange={(e) => setValue(e.target.value) } />
+                            <span>&#x2714;</span>
+                          </div> 
+                        : <div className={styles.modal__header_edit}>
+                            <h3 className={styles.modal__title}>{title}</h3>
+                            <span>&#x270e;</span>
+                          </div>
+                    }
+                    
                     <span className={styles.modal__close} onClick={() => onClose(false)}>
                         &times;
                     </span>
