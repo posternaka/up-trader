@@ -9,14 +9,15 @@ import ModalForCreateTask from '../../modal/ModalForCreateTask';
 
 import { onDrop } from '../../../utils/dragUtils.js';
 
-const Board = ({ board }) => {
+const Board = ({ board, title }) => {
   const [isActive, setActive] = React.useState(false);
   const [valueInput, setValueInput] = React.useState('');
-  const { value, index } = useSelector(store => store);
-
+  const { value, index, search } = useSelector(store => store);
+  
   const dispatch = useDispatch();
-
+  
   const taskList = value[index]?.tasks[board.type] || [];
+  const searchResult = taskList.filter(it => it.task_name.includes(search));
 
   const dragEndHandler = (e) => {
     e.preventDefault();
@@ -37,38 +38,40 @@ const Board = ({ board }) => {
     onDrop({ board_type: board.type, task_number: -1 });
   }
 
-  const onClickHandler = (e) => {
-    e.preventDefault();
-    dispatch(set_task({ index: index, valueInput: valueInput, board_type: board.type }));
+  const onClickHandler = () => {
     setActive(false);
+    return valueInput ? dispatch(set_task({ index: index, valueInput: valueInput, board_type: board.type })) : null;
   }
 
   return (
-    <div 
-      onDragOver={(e) => dragOverHandler(e)}
-      onDragLeave={(e) => dragLeaveHandler(e)}
-      onDragEnd={(e) => dragEndHandler(e)}
-      onDrop={(e) => dropHandler(e)}
-      className={'task__block task__block' + board.theme}
-      data-type='board'
-    >
+    <>
       <ModalWindow open={isActive} title='add task' onClose={() => setActive(false)} onClickHandler={onClickHandler}>
-        <ModalForCreateTask setValueInput={setValueInput} onClickHandler={onClickHandler} />
+        <ModalForCreateTask setValueInput={setValueInput} />
       </ModalWindow>
-      {
-        taskList.map(it => (
-          <Task key={it.task_number} board={board} task={it} index={index} />
-        ))
-      }
-      {
-        board.type === 'queue'
-        ? <div className='block__add' onClick={() => setActive(true)} >
-            <span>+</span>
-            <p>add new task</p>
-          </div>
-        : ''
-      }
-    </div>
+      <div 
+        onDragOver={(e) => dragOverHandler(e)}
+        onDragLeave={(e) => dragLeaveHandler(e)}
+        onDragEnd={(e) => dragEndHandler(e)}
+        onDrop={(e) => dropHandler(e)}
+        className={'task__block task__block' + board.theme}
+        data-type='board'
+      >
+        <h3>{title}</h3>
+        {
+          searchResult.map(it => (
+            <Task key={it.task_number} board={board} task={it} index={index} />
+          ))
+        }
+        {
+          board.type === 'queue'
+          ? <div className='block__add' onClick={() => setActive(true)} >
+              <span>+</span>
+              <p>add new task</p>
+            </div>
+          : ''
+        }
+      </div>
+    </>
   )
 }
 

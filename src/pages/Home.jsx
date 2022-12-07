@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { project_index } from '../redux/actions/projectIndex';
 
 const Home = () => {
-    const dispatch = useDispatch();
-    const { value } = useSelector(store => store);
+  const dispatch = useDispatch();
+  const { value } = useSelector(store => store);
 
     return (
       <div className='wrapper'>

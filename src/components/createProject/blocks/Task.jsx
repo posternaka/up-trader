@@ -43,7 +43,7 @@ const Task = ({ board, task, index }) => {
   return (
     <>
       <ModalWindow board={board} taskNumber={taskNumber} title={task.task_name} open={isActive} onClose={() => setActive(false)}>
-        <ModalForEditTask board={board} task={task} index={index} /> 
+        <ModalForEditTask board={board} task={task} index={index} onClose={() => setActive(false)}/> 
       </ModalWindow> 
       <div 
         onDragOver={(e) => dragOverHandler(e)}

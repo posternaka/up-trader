@@ -9,6 +9,14 @@ body {
     height: calc(100vh - 30px);
     margin-top: 15px;
     margin-bottom: 15px;
+
+    @media (max-width: 700px) {
+        font-size: 14px;
+        
+        h2 {
+            font-size: 20px;
+        }
+    } 
 }
 
 
@@ -19,8 +27,7 @@ body {
     background: $white;
     border-radius: 5px;
     margin: 0 auto;
-    height: 100%;
-    // height: calc(100vh - 30px);
+    // height: 100%;
 }
 
 .not_found {
@@ -91,16 +98,19 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 50px;
 
-    a {
-        width: 20%;
-    }
+    @media (max-width: 700px) {
+        gap: 0;
+    } 
 
     &__item {
         padding: 100px;
         cursor: pointer;
         transition: ease $duration;
+
+        @media (max-width: 700px) {
+            padding: 40px;
+        } 
         
         p {
             color: $pink;
@@ -123,12 +133,7 @@ body {
     }
 }
 
-.button {
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
+
 
 .form {
     display: flex;
@@ -208,6 +213,9 @@ body {
         gap: 40px;
         height: calc(100vh - 110px);
         
+        @media (max-width: 700px) {
+            flex-direction: column;
+        } 
     }
 
     &__block {
@@ -230,7 +238,26 @@ body {
                 padding: 10px;
                 text-align: center;
                 cursor: pointer;
+                border-bottom: 2px solid $blue;
+                transition: $duration;
+
+                &:hover {
+                    opacity: 0.6;
+                    box-shadow: 4px 6px 18px 9px rgba(0,0,0,0.1);
+                    transform: scale(1.1);
+                }
             }
         }
+
+        h3 {
+            text-align: center;
+            width: 100%;
+            background: $background;
+            overflow: hidden;
+        }
+
+        @media (max-width: 700px) {
+            width: 100%;
+        } 
     }
 }

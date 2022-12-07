@@ -15,8 +15,8 @@ const ModalWindow = ({ board = false, taskNumber, title, open, onClose, children
     const keydownHandler = ({ key }) => {
         switch (key) {
             case 'Escape':
-            onClose(false);
-            break;
+                onClose(false);
+                break;
             default:
         }
     };
@@ -39,7 +39,7 @@ const ModalWindow = ({ board = false, taskNumber, title, open, onClose, children
                     <span onClick={() => editTaskNameHandle()} >&#x2714;</span>
                 </div> 
             :   <div className={styles.modal__header_edit}>
-                    <p3 className={styles.modal__title}>{title}</p3>
+                    <p className={styles.modal__title}>{title}</p>
                     <span onClick={() => setEditTask(true)} >&#x270e;</span>
                 </div>
     }
@@ -55,19 +55,23 @@ const ModalWindow = ({ board = false, taskNumber, title, open, onClose, children
                     {
                         board.type === 'queue'  || board.type === 'development'
                             ? showSettingsForTaskTitleHandle() 
-                            : <p3 className={styles.modal__title}>{title}</p3>
+                            : <p className={styles.modal__title}>{title}</p>
                     }
                     <span className={styles.modal__close} onClick={() => onClose(false)}>
                         &times;
                     </span>
                 </div>
                 { children }
-                <button 
-                    onClick={(e) => onClickHandler(e)} 
-                    className='button'
-                >
-                    confirm
-                </button>
+                {
+                    onClickHandler
+                    ?   <button 
+                            onClick={(e) => onClickHandler(e)} 
+                            className={styles.modal__button}
+                        >
+                            confirm
+                        </button>
+                    : null
+                }
             </div>
         </div>
     );

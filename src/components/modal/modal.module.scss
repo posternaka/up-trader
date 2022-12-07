@@ -46,6 +46,8 @@
         justify-content: space-between; 
 
         &_edit {
+            display: flex;
+            gap: 30px;
             position: relative;
             width: 100%;
 
@@ -70,6 +72,18 @@
         cursor: pointer;
         padding: 1rem;
         margin: -1rem -1rem -1rem auto;
+    }
+
+    &__button {
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: $duration;
+
+        &:hover {
+            background: $done;
+        }
     }
 
     &__body {

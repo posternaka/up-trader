@@ -9,3 +9,5 @@ export const ADD_COMMENT = "ADD_COMMENT";
 export const ADD_DESCRIPTION = "ADD_DESCRIPTION";
 export const SET_SUBTASK = "SET_SUBTASK";
 export const SET_CHECK = "SET_CHECK";
+export const SET_END_DATE = "SET_END_DATE";
+export const SET_TIME_AT_WORK = "SET_TIME_AT_WORK";

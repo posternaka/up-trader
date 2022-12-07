@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-const Header = ({ title, taskList }) => {
-  const [value, setValue] = React.useState('');
+import { useDispatch } from 'react-redux';
+import { search } from '../../redux/actions/search';
+ 
+const Header = ({ title }) => {
+  const dispatch = useDispatch();
 
   return (
     <div className='task__header'>
@@ -13,7 +15,7 @@ const Header = ({ title, taskList }) => {
         <h1 className='task__title'>{ title }</h1>
         <div>
             <div className='task__search'>
-                <input type="text" onChange={(e) => setValue(e.target.value)} />
+                <input type="text" onChange={(e) => dispatch(search(e.target.value))} />
                 <span>&#128270;</span>
             </div>
         </div>

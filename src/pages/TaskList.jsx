@@ -11,8 +11,6 @@ const itemsDiv = [
 ];
 
 const TaskList = (  ) => {
-  const [currentType, setCurrentType] = React.useState('');
-
   const { value, index } = useSelector(store => store);
 
   if(!value[index]) {
@@ -21,11 +19,11 @@ const TaskList = (  ) => {
 
   return (
     <div className='wrapper'>
-      <Header title={ value[index].project_name } taskList={value.tasks} />
+      <Header title={ value[index].project_name } taskList={value[index].tasks} itemsDiv={itemsDiv} index={index} />
       <div className='task__blocks'>
         {
           itemsDiv.map(it => (
-            <Board key={it.id} board={it} />
+            <Board key={it.id} board={it} title={it.type} />
           ))
         }
       </div>

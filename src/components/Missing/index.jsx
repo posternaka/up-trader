@@ -13,13 +13,13 @@ const Missing = () => {
 
   const handle = () => {
     setActive(false);
-    dispatch(set_project(valueInput));
     setValueInput('');
+    return valueInput ? dispatch(set_project(valueInput)) : null;
   }
 
   return (
       <div className='missing'>
-        <ModalWindow open={isActive} title={'add new project'} onClose={() => setActive(false)} onClickHandler={handle} >
+        <ModalWindow open={isActive} title='add new project' onClose={() => setActive(false)} onClickHandler={handle} >
           <ModalForMissing setValueInput={setValueInput} />
         </ModalWindow>
         <div className='missing__wrapper' onClick={() => setActive(true)}>
