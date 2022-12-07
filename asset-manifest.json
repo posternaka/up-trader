@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/up-trader/static/css/main.1033bf44.css",
+    "main.js": "/up-trader/static/js/main.43c0bad4.js",
+    "index.html": "/up-trader/index.html",
+    "main.1033bf44.css.map": "/up-trader/static/css/main.1033bf44.css.map",
+    "main.43c0bad4.js.map": "/up-trader/static/js/main.43c0bad4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1033bf44.css",
+    "static/js/main.43c0bad4.js"
+  ]
+}
