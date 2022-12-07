@@ -1,15 +1,17 @@
 import React from 'react';
 import Board from '../components/createProject/blocks/Board';
+import Header from '../components/header/Header';
 
 import { useSelector } from 'react-redux';
 
 const itemsDiv = [
-  {id: 1, type: 'queue', title: 'queue', theme: '--queue', completed: false},
-  {id: 2, type: 'development', title: 'development', theme: '--development', completed: false},
-  {id: 3, type: 'done', title: 'done', theme: '--done', completed: false},
+  {id: 1, type: 'queue', theme: '--queue'},
+  {id: 2, type: 'development', theme: '--development'},
+  {id: 3, type: 'done', theme: '--done'},
 ];
 
 const TaskList = (  ) => {
+  const [currentType, setCurrentType] = React.useState('');
 
   const { value, index } = useSelector(store => store);
 
@@ -19,11 +21,11 @@ const TaskList = (  ) => {
 
   return (
     <div className='wrapper'>
-      <h1 className='task__title'>{ value[index].project_name }</h1>
+      <Header title={ value[index].project_name } taskList={value.tasks} />
       <div className='task__blocks'>
         {
           itemsDiv.map(it => (
-            <Board key={it.type} board={it} />
+            <Board key={it.id} board={it} />
           ))
         }
       </div>
@@ -32,11 +34,3 @@ const TaskList = (  ) => {
 }
 
 export default TaskList;
-
-
-{/* <div 
-              className={'task__block task__block' + it.theme}
-            >
-              <p>{it.title}</p>
-              {it.tag}
-            </div> */}

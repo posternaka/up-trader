@@ -1,5 +1,6 @@
 import React from 'react';
-import Modal from '../modal/index';
+import ModalWindow from '../modal/ModalWindow';
+import ModalForMissing from '../modal/ModalForMissing';
 
 import { useDispatch } from 'react-redux';
 import { set_project } from '../../redux/actions/setProject.js';
@@ -10,34 +11,22 @@ const Missing = () => {
 
   const dispatch = useDispatch();
 
-  const handle = (e) => {
-    e.preventDefault();
+  const handle = () => {
     setActive(false);
     dispatch(set_project(valueInput));
     setValueInput('');
   }
 
   return (
-    <>
-      {
-        isActive 
-        ? <Modal title={'add new project'} onClose={() => setActive(false)}>
-            <form className='form'>
-              <div className='form__name'>
-                  <input type="text" className="user" placeholder="project name" onChange={(e) => setValueInput(e.target.value)} />
-              </div>
-              <button onClick={(e) => handle(e)} className='button'>confirm</button>
-            </form>
-          </Modal>
-        : ''
-      }
       <div className='missing'>
+        <ModalWindow open={isActive} title={'add new project'} onClose={() => setActive(false)} onClickHandler={handle} >
+          <ModalForMissing setValueInput={setValueInput} />
+        </ModalWindow>
         <div className='missing__wrapper' onClick={() => setActive(true)}>
             <span>+</span>
             <p>add new project</p>
         </div>
       </div>
-    </>
   )
 }
 

@@ -2,6 +2,7 @@
 
 .task {
     font-size: 18px;
+    overflow: auto;
 
     .small_text {
         font-size: 12px;
@@ -37,7 +38,11 @@
             background: $blue;
             border-radius: 5px;
             padding: 3px;
-            margin-bottom: 8px;
+            margin-bottom: 8px;   
+
+            .check {
+                text-decoration: line-through;
+            }
         }
 
         .add {
@@ -79,9 +84,14 @@
                     border: none;
                     border-radius: 5px;
 
+                    &:focus,
                     &:hover {
                         background: $queue;
                     }
+                }
+
+                span {
+                    display: inline-block;
                 }
             }
         }

@@ -15,10 +15,10 @@ const Home = () => {
         <div className='content'>
           <div className='card_project'>
               {
-                  value.map((it, i) => (
+                value && value.map((it, i) => (
                     <Link to='/tasks' key={i} onClick={() => dispatch(project_index(i))}>
                       <div className='card_project__item' >
-                          <h1>{it.project_name}</h1>
+                          <h2>{it.project_name}</h2>
                           <p>project</p>
                       </div>
                     </Link>

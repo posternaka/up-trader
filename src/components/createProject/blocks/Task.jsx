@@ -1,16 +1,21 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import store from '../../../redux/store';
+
+import ModalWindow from '../../modal/ModalWindow';
+import ModalForEditTask from '../../modal/ModalForEditTask';
 
 import { onDrop } from '../../../utils/dragUtils.js';
-
 import { drag_info } from '../../../redux/actions/dragInfo';
 
-const Task = ({ board, task }) => {
+const Task = ({ board, task, index }) => {
+
+  const [isActive, setActive] = React.useState(false);
+  const [taskNumber, setTaskNumber] = React.useState('');
+
+
   const dispatch = useDispatch();
 
   const dragStartHandler = (e) => {
-    console.log('dragStartHandler');
     dispatch(drag_info( { task_number: task.task_number, board_type: board.type } ))
   }
 
@@ -36,19 +41,24 @@ const Task = ({ board, task }) => {
   }
   
   return (
-    <div 
-      onDragOver={(e) => dragOverHandler(e)}
-      onDragLeave={(e) => dragLeaveHandler(e)}
-      onDragEnd={(e) => dragEndHandler(e)}
-      onDrop={(e) => dropHandler(e)}
-      onDragStart={(e) => dragStartHandler(e)}
+    <>
+      <ModalWindow board={board} taskNumber={taskNumber} title={task.task_name} open={isActive} onClose={() => setActive(false)}>
+        <ModalForEditTask board={board} task={task} index={index} /> 
+      </ModalWindow> 
+      <div 
+        onDragOver={(e) => dragOverHandler(e)}
+        onDragLeave={(e) => dragLeaveHandler(e)}
+        onDragEnd={(e) => dragEndHandler(e)}
+        onDrop={(e) => dropHandler(e)}
+        onDragStart={(e) => dragStartHandler(e)}
 
-      draggable={true}
-      className='block__add' 
-      onClick={ () => console.log('onClick') }
-    >
-        <p>{ task.task_name }</p>
-    </div>
+        draggable={true}
+        className='block__add' 
+        onClick={ () => setActive(true) }
+      >
+        <p onClick={() => setTaskNumber(task.task_number)}>{ task.task_name }</p>
+      </div>
+    </>
   )
 }
 
